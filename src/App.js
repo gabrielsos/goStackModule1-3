@@ -43,18 +43,16 @@ export default function App() {
           renderItem={({item: repository}) => (
           <View style={styles.repositoryContainer}>
             <Text style={styles.repository}>{repository.title}</Text>
-            <FlatList
-              data={repository.techs}
-              keyExtractor={index => index}
-              renderItem={({item: tech}) => (
-              <View style={styles.techsContainer}>
-                <Text style={styles.tech}>
+            <View style={styles.techsContainer}>
+                {repository.techs.map(tech => (
+                <Text 
+                  style={styles.tech}
+                  key={tech}
+                >
                   {tech}
                 </Text>
-              </View>
-              )}
-            />
-      
+                ))}            
+            </View>
             <View style={styles.likesContainer}>
               <Text
                 style={styles.likeText}
